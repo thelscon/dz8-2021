@@ -4,7 +4,7 @@ const person = {
 
     _name : '' ,
     get name() {
-        if( this._name ) return this._name ;
+        return this._name ;
     } ,
     set name ( value ) {
         this._name = value ;
@@ -12,7 +12,7 @@ const person = {
 
     _age : '' ,
     get age() {
-        if( this._age ) return this._age ;
+        return this._age ;
     } ,
     set age( value ) {
         if( parseInt( value ) ) {
@@ -24,25 +24,19 @@ const person = {
 
     _gander : '' ,
     get gander()  {
-        if( this._gander ) return this._gander ;
+        return this._gander ;
     } ,
     set gander( value ) {
-        value = value   .trim()
-                        .toLowerCase() ;
-        if(    value === 'male'
-            || value === 'female'
-            || value === 'non-binary'
-            || value === 'transgender'
-            || value === 'intersex'
-            || value === 'n/a' ) 
-            this._gander = value ;
+        const ganderValue = [ 'male' , 'female' , 'non-binary' , 'transgender' , 'intersex' , 'n/a' ] ;
+        value = value.trim().toLowerCase() ;
+        if( ganderValue.includes( value ) ) this._gander = value ;
     }
 
 }
 
 person.name = 'Bob' ;
-person.age = '  21 age ' ;
-person.gander = '  Male' ;
+person.age = '  21* age ' ;
+person.gander = '  Male ' ;
 
 console.log( `name - ${person.name}` ) ;
 console.log( `age - ${person.age}` ) ;
